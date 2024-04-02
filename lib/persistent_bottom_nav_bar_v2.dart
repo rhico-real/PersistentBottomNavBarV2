@@ -1,5 +1,6 @@
 // Original Author: Bilal Shahid (bilalscheema@gmail.com)
 // Version 2 maintained by: Jannis Berndt (berndtjannis@gmail.com)
+// Fork: Rhico Abueme (rhicoabuemegithub@gmail.com)
 
 library persistent_bottom_nav_bar_v2;
 
@@ -8,6 +9,7 @@ import "dart:ui";
 
 import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
+import "package:flutter_svg/svg.dart";
 import "package:go_router/go_router.dart";
 
 part "components/custom_tab_view.dart";

@@ -15,14 +15,16 @@ class Style1BottomNavBar extends StatelessWidget {
         children: <Widget>[
           Expanded(
             child: IconTheme(
-              data: IconThemeData(
-                size: item.iconSize,
-                color: isSelected
-                    ? item.activeForegroundColor
-                    : item.inactiveForegroundColor,
-              ),
-              child: isSelected ? item.icon : item.inactiveIcon,
-            ),
+                data: IconThemeData(
+                  size: item.iconSize,
+                  color: isSelected
+                      ? item.activeForegroundColor
+                      : item.inactiveForegroundColor,
+                ),
+                child: isSelected
+                    ? SvgPicture.asset(item.iconString!,
+                        color: item.activeForegroundColor)
+                    : SvgPicture.asset(item.iconString!, color: Colors.grey)),
           ),
           if (item.title != null)
             Padding(
