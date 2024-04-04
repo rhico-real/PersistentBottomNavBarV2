@@ -10,47 +10,40 @@ class Style1BottomNavBar extends StatelessWidget {
   final NavBarConfig navBarConfig;
   final NavBarDecoration navBarDecoration;
 
-  Widget _buildItem(ItemConfig item, bool isSelected) => GestureDetector(
-        onTap: () {
-          if (item.onTap != null) {
-            item.onTap!();
-          }
-        },
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            Expanded(
-              child: IconTheme(
-                  data: IconThemeData(
-                    size: item.iconSize,
-                    color: isSelected
-                        ? item.activeForegroundColor
-                        : item.inactiveForegroundColor,
-                  ),
-                  child: isSelected
-                      ? SvgPicture.asset(item.iconString!,
-                          color: item.activeForegroundColor)
-                      : SvgPicture.asset(item.iconString!, color: Colors.grey)),
-            ),
-            if (item.title != null)
-              Padding(
-                padding: const EdgeInsets.only(top: 4),
-                child: Material(
-                  type: MaterialType.transparency,
-                  child: FittedBox(
-                    child: Text(
-                      item.title!,
-                      style: item.textStyle.apply(
-                        color: isSelected
-                            ? item.activeForegroundColor
-                            : item.inactiveForegroundColor,
-                      ),
+  Widget _buildItem(ItemConfig item, bool isSelected) => Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Expanded(
+            child: IconTheme(
+                data: IconThemeData(
+                  size: item.iconSize,
+                  color: isSelected
+                      ? item.activeForegroundColor
+                      : item.inactiveForegroundColor,
+                ),
+                child: isSelected
+                    ? SvgPicture.asset(item.iconString!,
+                        color: item.activeForegroundColor)
+                    : SvgPicture.asset(item.iconString!, color: Colors.grey)),
+          ),
+          if (item.title != null)
+            Padding(
+              padding: const EdgeInsets.only(top: 4),
+              child: Material(
+                type: MaterialType.transparency,
+                child: FittedBox(
+                  child: Text(
+                    item.title!,
+                    style: item.textStyle.apply(
+                      color: isSelected
+                          ? item.activeForegroundColor
+                          : item.inactiveForegroundColor,
                     ),
                   ),
                 ),
               ),
-          ],
-        ),
+            ),
+        ],
       );
 
   @override
@@ -67,6 +60,9 @@ class Style1BottomNavBar extends StatelessWidget {
               child: InkWell(
                 onTap: () {
                   navBarConfig.onItemSelected(index);
+                  if (item.onTap != null) {
+                    item.onTap!();
+                  }
                 },
                 child: _buildItem(
                   item,
