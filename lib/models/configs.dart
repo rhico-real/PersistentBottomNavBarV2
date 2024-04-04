@@ -7,6 +7,7 @@ class ItemConfig {
   ItemConfig({
     required this.icon,
     this.iconString,
+    this.onTap,
     Widget? inactiveIcon,
     this.title,
     this.activeForegroundColor = CupertinoColors.activeBlue,
@@ -32,6 +33,7 @@ class ItemConfig {
   /// Icon for the bar item.
   final Widget icon;
   final String? iconString;
+  final Function()? onTap;
 
   /// Inactive icon for the bar item. Defaults to `icon`
   final Widget inactiveIcon;
