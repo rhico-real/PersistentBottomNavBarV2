@@ -14,17 +14,25 @@ class Style1BottomNavBar extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
           Expanded(
-            child: IconTheme(
-                data: IconThemeData(
-                  size: item.iconSize,
-                  color: isSelected
-                      ? item.activeForegroundColor
-                      : item.inactiveForegroundColor,
-                ),
-                child: isSelected
-                    ? SvgPicture.asset(item.iconString!,
-                        color: item.activeForegroundColor)
-                    : SvgPicture.asset(item.iconString!, color: Colors.grey)),
+            child: badges.Badge(
+              position: badges.BadgePosition.topEnd(top: 2, end: -12),
+              badgeContent: Text(
+                item.badgeString ?? "",
+                style: const TextStyle(color: Colors.white, fontSize: 10),
+              ),
+              showBadge: item.showBadge ?? false,
+              child: IconTheme(
+                  data: IconThemeData(
+                    size: item.iconSize,
+                    color: isSelected
+                        ? item.activeForegroundColor
+                        : item.inactiveForegroundColor,
+                  ),
+                  child: isSelected
+                      ? SvgPicture.asset(item.iconString!,
+                          color: item.activeForegroundColor)
+                      : SvgPicture.asset(item.iconString!, color: Colors.grey)),
+            ),
           ),
           if (item.title != null)
             Padding(
@@ -61,6 +69,7 @@ class Style1BottomNavBar extends StatelessWidget {
                 onTap: () {
                   navBarConfig.onItemSelected(index);
                   if (item.onTap != null) {
+                    // ignore: prefer_null_aware_method_calls
                     item.onTap!();
                   }
                 },

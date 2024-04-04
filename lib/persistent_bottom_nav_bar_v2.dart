@@ -11,6 +11,7 @@ import "package:flutter/cupertino.dart";
 import "package:flutter/material.dart";
 import "package:flutter_svg/svg.dart";
 import "package:go_router/go_router.dart";
+import 'package:badges/badges.dart' as badges;
 
 part "components/custom_tab_view.dart";
 part "components/decorated_navbar.dart";
